@@ -1,2 +1,2 @@
 # PythonBootcampAngelaYu
-refreshing my python knowledge
+Refreshing my Python knowledge with Angela Yu's Udemy course.
