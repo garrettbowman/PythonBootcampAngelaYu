@@ -27,18 +27,36 @@ scissors = '''
 ---.__(___)
 '''
 
-userchoice = input("rock paper or scissors: ")
+gameimages = [rock, paper, scissors]
+userchoice = input("rock paper or scissors: \n")
 computerchoice = random.choice(["rock", "paper", "scissors"])
-print("You chose: " + userchoice)
-print("Computer chose: " + computerchoice)
+print(f"You chose: {userchoice}")
+if userchoice == "rock":
+    print(gameimages[0])
+elif userchoice == "paper":
+    print(gameimages[1])
+elif userchoice == "scissors":
+    print(gameimages[2])
 
-if userchoice == computerchoice:
-    print("Draw")
-elif userchoice == "rock" and computerchoice == "scissors":
-    print("You win")
-elif userchoice == "paper" and computerchoice == "rock":
-    print("You win")
-elif userchoice == "scissors" and computerchoice == "paper":
-    print("You win")
+print(f"Computer chose: {computerchoice}")  
+
+if computerchoice == "rock":
+    print(gameimages[0])
+elif computerchoice == "paper":
+    print(gameimages[1])
+elif computerchoice == "scissors":
+    print(gameimages[2])
+
+if userchoice not in ["rock", "paper", "scissors"]:
+    print("You lose, dummy")
 else:
-    print("You lose")
+    if userchoice == computerchoice:
+        print("Draw")
+    elif userchoice == "rock" and computerchoice == "scissors":
+        print("You win")
+    elif userchoice == "paper" and computerchoice == "rock":
+        print("You win")
+    elif userchoice == "scissors" and computerchoice == "paper":
+        print("You win")
+    else:
+        print("You lose")
