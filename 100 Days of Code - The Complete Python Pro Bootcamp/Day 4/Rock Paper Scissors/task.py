@@ -1,3 +1,5 @@
+import random
+
 rock = '''
     _______
 ---'   ____)
@@ -24,3 +26,19 @@ scissors = '''
       (____)
 ---.__(___)
 '''
+
+userchoice = input("rock paper or scissors: ")
+computerchoice = random.choice(["rock", "paper", "scissors"])
+print("You chose: " + userchoice)
+print("Computer chose: " + computerchoice)
+
+if userchoice == computerchoice:
+    print("Draw")
+elif userchoice == "rock" and computerchoice == "scissors":
+    print("You win")
+elif userchoice == "paper" and computerchoice == "rock":
+    print("You win")
+elif userchoice == "scissors" and computerchoice == "paper":
+    print("You win")
+else:
+    print("You lose")
