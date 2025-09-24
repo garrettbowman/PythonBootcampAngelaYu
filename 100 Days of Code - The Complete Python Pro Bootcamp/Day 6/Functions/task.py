@@ -1,6 +1,20 @@
-print("hello")len
+def turn_right()
+    turn_left()
+    turn_left()
+    turn_left()
 
+def jump():
+    move()
+    turn_left()
+    move()
+    turn_right()
+    move()
+    turn_right()
+    move()
+    turn_left()
 
-def my_function():
-    print("Hello")
-    print("Bye")
+while not at_goal():
+    if not wall_in_front():
+        move()
+    else:
+        jump()
