@@ -23,7 +23,7 @@ from art import logo
 print(logo)
 
 keepcalculating = True
-
+'''Keep the calulator running'''
 operations = {
     "+": add,
     "-": subtract,
@@ -32,7 +32,7 @@ operations = {
 }
 
 choice ="y"
-
+#see solution for recursion function calculator()
 while keepcalculating:
     num1= float(input("What is the first number?: "))
     if choice == "n":
