@@ -1,16 +1,23 @@
 # import anothermodule
 # import anothermodule
 import turtle
-import PrettyTable
+from prettytable import PrettyTable
 
-from turtle import Turtle, Screen
+# from turtle import Turtle, Screen
+#
+# gary = Turtle()
+# gary.shape("turtle")
+# gary.color("coral")
+# myscreen = Screen()
+# gary.forward(100)
+# print(myscreen.canvheight)
+# print (gary)
+#
+# myscreen.exitonclick()
 
-gary = Turtle()
-gary.shape("turtle")
-gary.color("coral")
-myscreen = Screen()
-gary.forward(100)
-print(myscreen.canvheight)
-print (gary)
+table = PrettyTable()
 
-myscreen.exitonclick()
+table.add_column("Name",["pika","charmander","squirtle"])
+table.add_column("type",["electric ","fire","water"])
+table.align = "l"
+print(table)
