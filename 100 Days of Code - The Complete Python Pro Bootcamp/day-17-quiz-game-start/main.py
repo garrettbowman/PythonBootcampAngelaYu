@@ -5,7 +5,7 @@ from quiz_brain import QuizBrain
 
 question_bank = []
 for entry in question_data:
-    question_bank.append(Question(entry["text"], entry["answer"]))
+    question_bank.append(Question(entry["question"], entry["correct_answer"]))
 
 
 # print(question_bank[0].txt)
@@ -19,10 +19,12 @@ for question in question_bank:
 
     userinput = str(input(f"True or False:")).lower()
     print(f"The correct answer is {brain.bank[brain.question].answer}")
-    if userinput == brain.bank[brain.question].answer.lower():
-        score +=1
-        print(f"Your score is currently: {score}.")
+    if brain.bank[brain.question].answer.lower() in userinput:
+        score =1
+        print("You got it right!")
+        print(f"Your score is currently: {score}/{brain.question+1}.")
     else:
+        print(f"Your score is currently: {score}/{brain.question + 1}.")
         pass
 
     brain.next_question()
