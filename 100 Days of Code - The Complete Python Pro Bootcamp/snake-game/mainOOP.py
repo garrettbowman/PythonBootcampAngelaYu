@@ -19,7 +19,7 @@ for init in range(60,200,20):
     food_locations.append(init)
 
 
-food = Turtle(shape="square")
+food = Turtle("turtle")
 food.setposition(random.choice(food_locations),random.choice(food_locations))
 food.color("green")
 
