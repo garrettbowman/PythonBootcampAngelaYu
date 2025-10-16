@@ -21,12 +21,12 @@ class Paddle:
         for x in range(PADDLE_SIZE):
             segment = Turtle("square")
             segment.penup()
-            segment.color("white")
             segment.setheading(90)
             segment.shapesize(stretch_wid=.5, stretch_len=1)
             segment.speed("fastest")
             segment.goto(self.side[x][0], self.side[x][1])
             segment.penup()
+            segment.color("white")
             self.segments.append(segment)
 
     def move_up(self):
@@ -45,21 +45,21 @@ class Paddle:
     #
     #     self.head_spot = self.segments[0].pos()
 
-    def game_over(self):
-        spot = self.segments[0].pos()
-        spots = []
-        # for _ in range(1,len(self.segments)):
-        #     spots.append(self.segments[_].pos())
-        #     if self.segments[_].distance(self.segments[0]) < 11:
-        #         return True
-        for _ in self.segments[1:]:
-            if _.distance(self.segments[0]) < 11:
-                return True
-        if abs(spot[0]) > 280:
-            return True
-        elif abs(spot[1]) > 280:
-            return True
-        # elif self.segments[0].distance(spot)< 5:
-        #     return True
-        else:
-            return Fals
+    # def game_over(self):
+    #     spot = self.segments[0].pos()
+    #     spots = []
+    #     # for _ in range(1,len(self.segments)):
+    #     #     spots.append(self.segments[_].pos())
+    #     #     if self.segments[_].distance(self.segments[0]) < 11:
+    #     #         return True
+    #     for _ in self.segments[1:]:
+    #         if _.distance(self.segments[0]) < 11:
+    #             return True
+    #     if abs(spot[0]) > 280:
+    #         return True
+    #     elif abs(spot[1]) > 280:
+    #         return True
+    #     # elif self.segments[0].distance(spot)< 5:
+    #     #     return True
+    #     else:
+    #         return False
