@@ -33,12 +33,15 @@ used = []
 states_left = True
 writer = turtle.Turtle()
 writer.penup()
-answer_state = screen.textinput("Guess the state",prompt="What is a state?").capitalize()
+answer_state = screen.textinput("Guess the state",prompt="What is a state?").title()
 while states_left:
+
     if answer_state == "New york":
         answer_state = "New York"
     elif answer_state == "New jersey":
         answer_state = "New Jersey"
+    elif answer_state == "Exit":
+        break
 
     # for item in range(0,len(states)):
     if states.isin([answer_state]).any():
@@ -55,9 +58,17 @@ while states_left:
 
     # if answer_state:
     #     pass
-    answer_state = screen.textinput(title=f"{len(used)}/50 correct",prompt="What is another state?").capitalize()
+    answer_state = screen.textinput(title=f"{len(used)}/50 correct",prompt="What is another state?").title()
 
+final = []
+for state in states:
+    if state not in used:
+        final.append(state)
 
+df = pandas.Series(final)
+df.to_csv("states_to_learn.csv", index = False)
+# with open("states_to_learn.csv",mode ="w") as to_learn:
+#     to_learn.csv(final)
 
 
 
