@@ -28,13 +28,16 @@ SHEETY_API = "x"
 
 headers = {
 }
+today_date = datetime.now().strftime("%d/%m/%Y")
+now_time = datetime.now().strftime("%X")
+GOOGLE_SHEET_NAME = "workout"
+params= {GOOGLE_SHEET_NAME:{
 
-params= {
-    "Date":str(datetime.now()),
-    "Time":"233",
-    "Exercise":"walking",
-    "Duration":"2 hours",
-    "Calories":"2313"
+    "date": today_date,
+    "time": now_time,
+    "exercise":"walking",
+    "duration":"2 hours",
+    "calories":"2313" }
 }
 
 response2 = requests.post(url=SHEETY_API,json=params, headers=headers)
