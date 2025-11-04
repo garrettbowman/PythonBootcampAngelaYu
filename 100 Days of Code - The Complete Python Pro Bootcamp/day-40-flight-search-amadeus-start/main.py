@@ -13,7 +13,7 @@ flight_search = FlightSearch()
 notification_manager = NotificationManager()
 
 # Set your origin airport
-ORIGIN_CITY_IATA = "LON"
+ORIGIN_CITY_IATA = "DFW"
 
 # ==================== Update the Airport Codes in Google Sheet ====================
 
@@ -38,12 +38,14 @@ for destination in sheet_data:
         ORIGIN_CITY_IATA,
         destination["iataCode"],
         from_time=tomorrow,
-        to_time=six_month_from_today
+        to_time=six_month_from_today,
+        direct = "true"
     )
     cheapest_flight = find_cheapest_flight(flights)
     print(f"{destination['city']}: £{cheapest_flight.price}")
     # Slowing down requests to avoid rate limit
     time.sleep(2)
+
 
     if cheapest_flight.price != "N/A" and cheapest_flight.price < destination["lowestPrice"]:
         print(f"Lower price flight found to {destination['city']}!")
@@ -53,10 +55,51 @@ for destination in sheet_data:
         #                  f"on {cheapest_flight.out_date} until {cheapest_flight.return_date}."
         # )
         # SMS not working? Try whatsapp instead.
-        notification_manager.send_whatsapp(
-            message_body=f"Low price alert! Only £{cheapest_flight.price} to fly "
-                         f"from {cheapest_flight.origin_airport} to {cheapest_flight.destination_airport}, "
-                         f"on {cheapest_flight.out_date} until {cheapest_flight.return_date}."
+        # notification_manager.send_whatsapp(
+        #     message_body=f"Low price alert! Only £{cheapest_flight.price} to fly "
+        #                  f"from {cheapest_flight.origin_airport} to {cheapest_flight.destination_airport}, "
+        #                  f"on {cheapest_flight.out_date} until {cheapest_flight.return_date}."
+        # )
+
+
+        message_body = f"Low price alert DIRECT ! Only £{cheapest_flight.price} to fly "f"from {cheapest_flight.origin_airport} to {cheapest_flight.destination_airport}, "f"on {cheapest_flight.out_date} until {cheapest_flight.return_date}."
+        print(message_body)
+        data_manager.get_customer_emails()
+        notification_manager.send_email(data_manager.email_data, message_body)
+
+
+
+    else:
+        print(f"Getting non-direct flights for {destination['city']}...")
+        flights = flight_search.check_flights(
+            ORIGIN_CITY_IATA,
+            destination["iataCode"],
+            from_time=tomorrow,
+            to_time=six_month_from_today,
+            direct="false"
         )
+        cheapest_flight = find_cheapest_flight(flights)
+        print(f"{destination['city']}: £{cheapest_flight.price}")
+        # Slowing down requests to avoid rate limit
+        time.sleep(2)
+
+        if cheapest_flight.price != "N/A" and cheapest_flight.price < destination["lowestPrice"]:
+            print(f"Lower price non-direct flight found to {destination['city']}!")
+            # notification_manager.send_sms(
+            #     message_body=f"Low price alert! Only £{cheapest_flight.price} to fly "
+            #                  f"from {cheapest_flight.origin_airport} to {cheapest_flight.destination_airport}, "
+            #                  f"on {cheapest_flight.out_date} until {cheapest_flight.return_date}."
+            # )
+            # SMS not working? Try whatsapp instead.
+            # notification_manager.send_whatsapp(
+            #     message_body=f"Low price alert! Only £{cheapest_flight.price} to fly "
+            #                  f"from {cheapest_flight.origin_airport} to {cheapest_flight.destination_airport}, "
+            #                  f"on {cheapest_flight.out_date} until {cheapest_flight.return_date}."
+            # )
 
 
+            message_body = f"Low price alert NON-DIRECT! Only £{cheapest_flight.price} to fly "f"from {cheapest_flight.origin_airport} to {cheapest_flight.destination_airport}, "f"on {cheapest_flight.out_date} until {cheapest_flight.return_date}."
+            print(message_body)
+
+            data_manager.get_customer_emails()
+            notification_manager.send_email(data_manager.email_data, message_body)
