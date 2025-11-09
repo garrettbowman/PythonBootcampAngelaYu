@@ -34,3 +34,9 @@ print(class_heading)
 
 company_url = soup.select_one(selector= "p a")
 print(company_url)
+
+company_url = soup.select_one(selector= "#name")
+print(company_url.getText())
+
+headings = soup.select(".heading")
+print(headings)
