@@ -1,0 +1,55 @@
+ENV
+
+import os
+
+from dotenv import load_dotenv
+
+load_dotenv() # This loads variables from .env into os.environ
+
+my_env_var = os.getenv('MY_ENV_VAR')
+
+database_url = os.getenv('DATABASE_URL')
+
+print(f"MY_ENV_VAR from .env: {my_env_var}")
+
+print(f"DATABASE_URL from .env: {database_url}")
+
+
+
+Pandas list comprehension
+
+import pandas as pd
+
+# Create a sample DataFrame
+
+data = {'col1': [1, 2, 3], 'col2': ['A', 'B', 'C']}
+
+df = pd.DataFrame(data)
+
+# Example: Create a list of tuples (index, value_from_col1)
+
+new_list = [(index, row['col1']) for index, row in df.iterrows()]
+
+print(new_list)
+
+
+
+
+
+Dictionary items:
+
+new_list = [expression for key, value in dictionary.items() if condition]
+
+my_dict = {'a': 1, 'b': 2, 'c': 3}
+
+items_list = [(key, value) for key, value in my_dict.items()]
+
+print(items_list)
+
+[('a', 1), ('b', 2), ('c', 3)]
+
+my_dict = {'apple': 10, 'banana': 20, 'apricot': 30}
+
+filtered_values = [value for key, value in my_dict.items() if key.startswith('a')]
+
+print(filtered_values)
