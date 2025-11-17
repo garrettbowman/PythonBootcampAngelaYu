@@ -11,7 +11,7 @@ driver.get("https://secure-retreat-92358.herokuapp.com/")
 
 inputs = driver.find_elements(By.CSS_SELECTOR, "form input")
 inputs[0].send_keys("Gary")
-inputs[1].send_keys("Gary")
+inputs[1].send_keys("bo")
 inputs[2].send_keys("Gary@asda.com")
 button = driver.find_element(By.CSS_SELECTOR, "form button")
 
