@@ -10,8 +10,8 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 # Add your credentials at the top of your script
-ACCOUNT_EMAIL = "x"  # The email you registered with
-ACCOUNT_PASSWORD = "x"      # The password you used during registration
+ACCOUNT_EMAIL = "garrettbowman96@gmail.com"  # The email you registered with
+ACCOUNT_PASSWORD = "$heddedm8"      # The password you used during registration
 GYM_URL = "https://appbrewery.github.io/gym/"
 
 
@@ -27,7 +27,7 @@ driver = webdriver.Chrome(options=chrome_options)
 
 driver.get("https://appbrewery.github.io/gym/")
 
-
+wait = WebDriverWait(driver, 2)
 driver.implicitly_wait(3)
 button = driver.find_element(By.ID, value="login-button")
 button.click()
@@ -44,4 +44,19 @@ login_submit.click()
 # wait.until(lambda _ : revealed.send_keys("Displayed") or True)
 # worked = driver.presence_of_element_located(By.CSS_SELECTOR,"schedule-page")
 
-element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "schedule-page")))
+# element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "schedule-page")))
+wait.until(EC.presence_of_element_located((By.ID, "schedule-page")))
+
+tues_spin_class = driver.find_element(By.CSS_SELECTOR,'div[id^="day-group-tue"] div[id^="class-card-spin-"]')
+tues_spin_day = driver.find_element(By.CSS_SELECTOR,'div[id^="day-group-tue"] h2')
+tues_spin_class_button = driver.find_element(By.CSS_SELECTOR,'div[id^="day-group-tue"] div[id^="class-card-spin-"] button')
+# print(tues_spin_class)
+tues_spin_class_button.click()
+print(f"✓ Booked: Spin Class on {tues_spin_day.text}")
+
+
+print("✓ Already booked: Spin Class on Tue, Aug 12")
+
+print("✓ Already on waitlist: HIIT Class on Tue, Aug 12")
+
+print("✓ Joined waitlist for: Yoga Class on Tue, Aug 12")

@@ -60,3 +60,13 @@ coverage.xml
 # Local environment config
 *.env
 *.local
+
+# WebDriver executables
+chromedriver*
+geckodriver*
+msedgedriver*
+safaridriver*
+
+# Dependency management files (if not part of the project)
+node_modules/
+vendor/
