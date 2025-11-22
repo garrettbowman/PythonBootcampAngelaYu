@@ -54,9 +54,12 @@ tues_spin_class_button = driver.find_element(By.CSS_SELECTOR,'div[id^="day-group
 tues_spin_class_button.click()
 print(f"✓ Booked: Spin Class on {tues_spin_day.text}")
 
+if driver.find_element(By.CSS_SELECTOR,'div[id^="day-group-tue"] div[id^="class-card-spin-"] button').text == "Booked":
+    print(f"✓ Already booked: Spin Class on {tues_spin_day.text}")
+elif driver.find_element(By.CSS_SELECTOR,'div[id^="day-group-tue"] div[id^="class-card-spin-"] button').text == "Waitlisted":
+    print(f"✓ Already on waitlist: HIIT Class on {tues_spin_day.text}")
 
-print("✓ Already booked: Spin Class on Tue, Aug 12")
 
-print("✓ Already on waitlist: HIIT Class on Tue, Aug 12")
-
-print("✓ Joined waitlist for: Yoga Class on Tue, Aug 12")
+if driver.find_element(By.CSS_SELECTOR,'div[id^="day-group-tue"] div[id^="class-card-spin-"] button').text == "Join Waitlist":
+    driver.find_element(By.CSS_SELECTOR, 'div[id^="day-group-tue"] div[id^="class-card-spin-"] button').click()
+    print("✓ Joined waitlist for: Yoga Class on Tue, Aug 12")
