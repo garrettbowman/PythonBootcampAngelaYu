@@ -46,20 +46,27 @@ login_submit.click()
 
 # element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "schedule-page")))
 wait.until(EC.presence_of_element_located((By.ID, "schedule-page")))
+class_cards = driver.find_elements(By.CSS_SELECTOR,'div[id^="class-card"]')
 
-tues_spin_class = driver.find_element(By.CSS_SELECTOR,'div[id^="day-group-tue"] div[id^="class-card-spin-"]')
-tues_spin_day = driver.find_element(By.CSS_SELECTOR,'div[id^="day-group-tue"] h2')
-tues_spin_class_button = driver.find_element(By.CSS_SELECTOR,'div[id^="day-group-tue"] div[id^="class-card-spin-"] button')
-# print(tues_spin_class)
-tues_spin_class_button.click()
-print(f"✓ Booked: Spin Class on {tues_spin_day.text}")
+# print(class_cards)
 
-if driver.find_element(By.CSS_SELECTOR,'div[id^="day-group-tue"] div[id^="class-card-spin-"] button').text == "Booked":
-    print(f"✓ Already booked: Spin Class on {tues_spin_day.text}")
-elif driver.find_element(By.CSS_SELECTOR,'div[id^="day-group-tue"] div[id^="class-card-spin-"] button').text == "Waitlisted":
-    print(f"✓ Already on waitlist: HIIT Class on {tues_spin_day.text}")
+for card in class_cards:
+    
 
 
-if driver.find_element(By.CSS_SELECTOR,'div[id^="day-group-tue"] div[id^="class-card-spin-"] button').text == "Join Waitlist":
-    driver.find_element(By.CSS_SELECTOR, 'div[id^="day-group-tue"] div[id^="class-card-spin-"] button').click()
-    print("✓ Joined waitlist for: Yoga Class on Tue, Aug 12")
+# tues_spin_class = driver.find_element(By.CSS_SELECTOR,'div[id^="day-group-tue"] div[id^="class-card-spin-"]')
+# tues_spin_day = driver.find_element(By.CSS_SELECTOR,'div[id^="day-group-tue"] h2')
+# tues_spin_class_button = driver.find_element(By.CSS_SELECTOR,'div[id^="day-group-tue"] div[id^="class-card-spin-"] button')
+# # print(tues_spin_class)
+# tues_spin_class_button.click()
+# print(f"✓ Booked: Spin Class on {tues_spin_day.text}")
+#
+# if driver.find_element(By.CSS_SELECTOR,'div[id^="day-group-tue"] div[id^="class-card-spin-"] button').text == "Booked":
+#     print(f"✓ Already booked: Spin Class on {tues_spin_day.text}")
+# elif driver.find_element(By.CSS_SELECTOR,'div[id^="day-group-tue"] div[id^="class-card-spin-"] button').text == "Waitlisted":
+#     print(f"✓ Already on waitlist: HIIT Class on {tues_spin_day.text}")
+#
+#
+# if driver.find_element(By.CSS_SELECTOR,'div[id^="day-group-tue"] div[id^="class-card-spin-"] button').text == "Join Waitlist":
+#     driver.find_element(By.CSS_SELECTOR, 'div[id^="day-group-tue"] div[id^="class-card-spin-"] button').click()
+#     print("✓ Joined waitlist for: Yoga Class on Tue, Aug 12")
