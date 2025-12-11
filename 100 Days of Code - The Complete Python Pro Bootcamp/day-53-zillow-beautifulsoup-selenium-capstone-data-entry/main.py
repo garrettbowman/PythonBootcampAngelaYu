@@ -13,5 +13,6 @@ response = requests.get(url=zillow_url, headers=header)
 
 soup = BeautifulSoup(response.text, 'html.parser')
 
-houses = soup.select()
-print(houses)
+houses = soup.select(".StyledPropertyCardHomeDetailsList")
+listings = [x.getText().strip("'\n',',',") for x in houses]
+print(listings)
