@@ -13,6 +13,11 @@ response = requests.get(url=zillow_url, headers=header)
 
 soup = BeautifulSoup(response.text, 'html.parser')
 
-houses = soup.select(".StyledPropertyCardHomeDetailsList")
-listings = [x.getText().strip("'\n',',',") for x in houses]
-print(listings)
+# houses = soup.select(".StyledPropertyCardHomeDetailsList")
+# listings = [x.getText().strip("'\n',',',") for x in houses]
+
+links_temp = soup.select(".StyledPropertyCardDataArea-anchor")
+links = []
+for x in links_temp:
+    links.append(x.get('href'))
+print(links)
