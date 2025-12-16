@@ -21,3 +21,9 @@ links = []
 for x in links_temp:
     links.append(x.get('href'))
 print(links)
+
+prices= []
+prices_temp = soup.select(".PropertyCardWrapper span")
+for x in prices_temp:
+    prices.append(x.getText().split("+")[0].split("/")[0])
+print(prices)
