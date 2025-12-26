@@ -53,3 +53,10 @@ my_dict = {'apple': 10, 'banana': 20, 'apricot': 30}
 filtered_values = [value for key, value in my_dict.items() if key.startswith('a')]
 
 print(filtered_values)
+
+
+Flask:
+
+$env:FLASK_APP = "hello.py"
+
+flask run
