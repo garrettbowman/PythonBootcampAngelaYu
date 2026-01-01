@@ -59,7 +59,7 @@ def delay_decorator(function):
 
 @delay_decorator
 def say_hello():
-    print("Hello")
+    print("Hello ")
 
 #With the @ syntactic sugar
 @delay_decorator
