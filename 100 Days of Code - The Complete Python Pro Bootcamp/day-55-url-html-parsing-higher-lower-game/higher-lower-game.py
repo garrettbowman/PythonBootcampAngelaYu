@@ -1,29 +1,14 @@
 from flask import Flask
+import random
 
 app = Flask(__name__)
-
+number = random.randint(1, 10)
 def make_bold(func):
     def wrapper():
 
         text = func()
 
         return f"<b>{text}</b>"
-    return wrapper
-
-def make_emphasis(func):
-    def wrapper():
-
-        text = func()
-
-        return f"<em>{text}</em>"
-    return wrapper
-
-def make_underlined(func):
-    def wrapper():
-
-        text = func()
-
-        return f"<u>{text}</u>"
     return wrapper
 
 
@@ -42,8 +27,6 @@ def hello_world():
 #
 @app.route("/bye")
 @make_bold
-@make_emphasis
-@make_underlined
 def bye():
     return "bye!"
 
@@ -51,12 +34,21 @@ def bye():
 # def say_greeting(name):
 #     return f"Hello, {name}"
 
-@app.route("/username/<path:name>")
-def say_greeting(name):
-    return f"Hello, {name}"
+@app.route("/<int:num>")
+def checknum(num):
+    if num == number:
+
+        return f"You got it, the number was {num}!"
+
+    elif  num > number:
+        return f"too high"
+
+    else:
+        return f"too low"
 
 
 if __name__ == "__main__":
     app.run(debug=True)
 
-say_greeting()
+
+checknum()
