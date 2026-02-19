@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template,request
 import requests
 
 # USE YOUR OWN npoint LINK! ADD AN IMAGE URL FOR YOUR POST. 👇
@@ -10,6 +10,11 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     return render_template("index.html")
+
+
+@app.route('/login', methods=['POST'])
+def receive_data():
+    return f"<h1>{request.form['username']}{ request.form['password']}</h1>"
 
 
 
