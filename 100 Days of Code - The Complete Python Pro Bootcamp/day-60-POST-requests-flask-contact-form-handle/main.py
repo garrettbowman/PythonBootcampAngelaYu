@@ -14,7 +14,9 @@ def home():
 
 @app.route('/login', methods=['POST'])
 def receive_data():
-    return f"<h1>{request.form['username']}{ request.form['password']}</h1>"
+    name = request.form['username']
+    password = request.form['password']
+    return f"<h1>name:{name}password:{password}</h1>"
 
 
 
