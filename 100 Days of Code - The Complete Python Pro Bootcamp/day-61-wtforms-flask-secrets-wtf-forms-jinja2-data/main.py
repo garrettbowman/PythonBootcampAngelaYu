@@ -1,4 +1,12 @@
 from flask import Flask, render_template
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField
+from wtforms.validators import DataRequired
+
+class MyForm(FlaskForm):
+    email = StringField('Email', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+
 
 '''
 Red underlines? Install the required packages first: 
@@ -24,7 +32,8 @@ def home():
 
 @app.route("/login")
 def login():
-    return render_template('login.html')
+    form = MyForm(meta={'csrf': False})
+    return render_template('login.html', form=form)
 
 
 if __name__ == '__main__':
