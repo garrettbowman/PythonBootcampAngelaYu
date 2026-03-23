@@ -1,8 +1,8 @@
 # PythonBootcampAngelaYu
-Refreshing my Python knowledge with Angela Yu's 100 day Udemy course.
+Selecting some of the assignments to showcase my knowledge of python and reference on mobile devices.
 
 
 ![Course logo](yu.jpg?raw=true "Dr. Angela")
 
-[https://armyciv.udemy.com/course/100-days-of-code/](https://armyciv.udemy.com/course/100-days-of-code)
+[https://udemy.com/course/100-days-of-code/](https://www.udemy.com/course/100-days-of-code/?srsltid=AfmBOopnNpvrPbcebfFqArttFyoYhEWxOBFbVh9OOlemH0qnsKgRMs4v)
 
