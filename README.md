@@ -1,6 +1,7 @@
 # PythonBootcampAngelaYu
 Selecting some of the assignments to showcase my knowledge of python and reference on mobile devices.
 
+I added a password to protect the material. Hint: Foo
 
 ![Course logo](yu.jpg?raw=true "Dr. Angela")
 
