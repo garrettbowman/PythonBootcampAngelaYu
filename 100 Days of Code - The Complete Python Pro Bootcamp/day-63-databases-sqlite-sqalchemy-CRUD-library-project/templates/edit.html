@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Add Book</title>
+</head>
+<body>
+<p>Enter rating for {{book.title}}</p>
+
+<p>Current rating for {{book.title}}: {{book.rating}}</p>
+<form action="{{ url_for('home2', id = book.id )}}" method="POST">
+    <label for="rating">Rating</label>
+    <input
+            id="rating"
+            name="rating"
+            type="text"
+
+    />
+    <button type="submit">Add Rating</button>
+</form>
+</body>
+</html>

@@ -10,9 +10,10 @@
       <p>There are no books.</p>
     {%endif%}
     <ul>
-      <li>{{books}}</li>
+<!--      <li>{{books}}</li>-->
       {% for book in books %}
-      <li>{{book.name - book.author - book.rating/10}}</li>
+
+      <li><a href="{{url_for('delete', id= book.id)}}">Delete Book</a> {{book.title}} - {{book.author}} - {{book.rating}} /10 <a href="{{url_for('edit', id= book.id)}}">Update Rating</a></li>
 
       {%endfor%}
     </ul>
